@@ -1,7 +1,9 @@
 image:
-  file: .gitpod.dockerfile
+  file: docker/Dockerfile
 ports:
   - port: 8080
     onOpen: open-preview
   - port: 3306
     onOpen: ignore
+- init: >
+    composer update

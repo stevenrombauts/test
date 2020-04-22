@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM ubuntu:18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -10,6 +10,7 @@ ENV PHP_ERROR_REPORTING "4983"
 
 # Install packages
 USER root
+RUN useradd -ms /bin/bash gitpod
 RUN apt-get update \
  && apt-get install -y software-properties-common curl vim-tiny \
  && curl -s https://packagecloud.io/install/repositories/timble/web/script.deb.sh | bash \
@@ -20,6 +21,7 @@ RUN apt-get update \
     php7.4-fpm php-apcu php7.4-curl php7.4-gd php-imagick php7.4-intl php7.4-json php7.4-mbstring php-mongodb php7.4-mysql php-oauth php-sodium php7.4-tidy php7.4-xml php-yaml php7.4-zip \
     mysql-client \
  && apt-get remove -y gnupg curl software-properties-common gnupg apt-transport-https \
+ && curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
  && apt-get -y autoremove \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/* \
