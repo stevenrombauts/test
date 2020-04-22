@@ -10,14 +10,12 @@ ENV PHP_ERROR_REPORTING "4983"
 
 # Install packages
 USER root
-RUN apt-add-repository ppa:ondrej/php \
+RUN mkdir -p /etc/apt/sources.list.d/ \
+ && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main" > /etc/apt/sources.list.d/ondrej-ubuntu-php-bionic.list \
  && apt-get update \
  && apt-get install -y supervisor \
-    software-properties-common curl vim-tiny \
     nginx \
     php7.4-fpm php-apcu php7.4-curl php7.4-gd php-imagick php7.4-intl php7.4-json php7.4-mbstring php-mongodb php7.4-mysql php-oauth php-sodium php7.4-tidy php7.4-xml php-yaml php7.4-zip \
-    mysql-server mysql-client \
- && apt-get remove -y gnupg curl software-properties-common gnupg apt-transport-https \
  && curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Create required directories and set file permissions
