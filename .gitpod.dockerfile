@@ -9,6 +9,7 @@ ENV PHP_DISPLAY_ERRORS "off"
 ENV PHP_ERROR_REPORTING "4983"
 
 # Install packages
+USER root
 RUN apt-get update \
  && apt-get install -y software-properties-common curl vim-tiny \
  && curl -s https://packagecloud.io/install/repositories/timble/web/script.deb.sh | bash \
