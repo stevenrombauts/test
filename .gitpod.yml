@@ -2,8 +2,7 @@ image:
   file: docker/Dockerfile
 ports:
   - port: 8080
-    onOpen: open-preview
-  - port: 3306
-    onOpen: ignore
+    onOpen: open-browser
 - init: >
-    composer update
+    composer update &&
+    sudo supervisorctl start all

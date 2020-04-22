@@ -35,10 +35,3 @@ RUN mkdir -p /var/run/php
 COPY ./docker/supervisord /etc/supervisor/conf.d/
 COPY ./docker/php/fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 COPY ./docker/nginx/default.conf /etc/nginx/sites-available/default
-
-EXPOSE 80
-EXPOSE 8080
-
-WORKDIR /var/www/
-
-CMD ["/usr/bin/supervisord"]
