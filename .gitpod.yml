@@ -1,8 +1,8 @@
 image:
-  file: docker/Dockerfile
+  file: Dockerfile
 ports:
   - port: 8080
     onOpen: open-browser
-- init: >
+  - init: >
     composer update &&
     sudo supervisorctl start all
