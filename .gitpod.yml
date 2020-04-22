@@ -3,6 +3,3 @@ image:
 ports:
   - port: 8080
     onOpen: open-browser
-tasks:
-  - command: supervisorctl start all
-    name:
