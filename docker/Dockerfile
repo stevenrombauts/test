@@ -12,6 +12,7 @@ ENV PHP_ERROR_REPORTING "4983"
 USER root
 RUN mkdir -p /etc/apt/sources.list.d/ \
  && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main" > /etc/apt/sources.list.d/ondrej-ubuntu-php-bionic.list \
+ && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 14AA40EC0831756756D7F66C4F4EA0AAE5267A6C
  && apt-get update \
  && apt-get install -y supervisor \
     nginx \
