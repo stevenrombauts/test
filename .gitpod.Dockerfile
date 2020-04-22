@@ -10,8 +10,6 @@ ENV PHP_ERROR_REPORTING "4983"
 
 # Install packages
 USER root
-RUN useradd -ms /bin/bash gitpod \
- && echo 'deploy ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN apt-add-repository ppa:ondrej/php \
  && apt-get update \
  && apt-get install -y supervisor \
