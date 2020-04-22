@@ -10,7 +10,8 @@ ENV PHP_ERROR_REPORTING "4983"
 
 # Install packages
 USER root
-RUN useradd -ms /bin/bash gitpod
+RUN useradd -ms /bin/bash gitpod \
+ && echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/gitpod
 RUN apt-get update \
  && apt-get install -y software-properties-common curl vim-tiny \
  && curl -s https://packagecloud.io/install/repositories/timble/web/script.deb.sh | bash \
@@ -31,8 +32,8 @@ RUN apt-get update \
 RUN mkdir -p /var/run/php
 
 # Configure the services
-COPY ./supervisord /etc/supervisor/conf.d/
-COPY ./php/fpm.conf /etc/php/7.4/fpm/php-fpm.conf
+COPY ./docker/supervisord /etc/supervisor/conf.d/
+COPY ./docker/php/fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 COPY ./docker/nginx/default.conf /etc/nginx/sites-available/default
 
 EXPOSE 80
