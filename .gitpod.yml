@@ -3,6 +3,3 @@ image:
 ports:
   - port: 8080
     onOpen: open-browser
-  - init: >
-    composer update &&
-    sudo supervisorctl start all
