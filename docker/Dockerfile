@@ -13,7 +13,6 @@ USER root
 RUN apt-get update \
  && apt-get install -y supervisor \
  && nginx \
- && mysql-client \
  && php-fpm \
  && curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
