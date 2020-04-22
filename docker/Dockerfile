@@ -13,7 +13,7 @@ USER root
 RUN apt-get update \
  && apt-get install -y supervisor \
  && nginx \
- && php-fpm \
+ && php7.4-fpm \
  && curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Configure the services
